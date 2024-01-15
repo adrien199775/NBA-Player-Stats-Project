@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Players Stats</title>
+    <style>
+        body {
+            background-color: #ffffff; /* White background */
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333333; /* Dark text color */
+        }
+
+        #playerList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0; /* Light gray background for each player */
+            border-radius: 5px;
+        }
+
+        .playerName {
+            color: #007bff; /* Blue color for player names */
+            font-weight: bold;
+        }
+
+        .statLabel {
+            color: #555555; /* Dark gray color for stat labels */
+        }
+    </style>
+</head>
+<body>
+    <h1>NBA Players and Stats</h1>
+
+    <ul id="playerList"></ul>
+
+    <script>
+        // Using a self-invoking function to create a private scope
+        (function() {
+            // Sample NBA player data
+            const nbaPlayers = [
+                { name: 'LeBron James', pointsPerGame: 25.4, reboundsPerGame: 7.8, assistsPerGame: 10.6 },
+                { name: 'Kevin Durant', pointsPerGame: 28.2, reboundsPerGame: 7.1, assistsPerGame: 5.0 },
+                { name: 'Giannis Antetokounmpo', pointsPerGame: 29.0, reboundsPerGame: 13.6, assistsPerGame: 5.6 },
+                // Add more players with their stats
+            ];
+
+            // Function to display players and their stats
+            function displayPlayers() {
+                const playerList = document.getElementById('playerList');
+
+                // Clear existing list
+                playerList.innerHTML = '';
+
+                // Iterate through players and create list items
+                nbaPlayers.forEach(player => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <span class="playerName">${player.name}</span> - 
+                        <span class="statLabel">Points:</span> ${player.pointsPerGame}, 
+                        <span class="statLabel">Rebounds:</span> ${player.reboundsPerGame}, 
+                        <span class="statLabel">Assists:</span> ${player.assistsPerGame}`;
+                    playerList.appendChild(listItem);
+                });
+            }
+
+            // Call the function to display players
+            displayPlayers();
+        })();
+    </script>
+</body>
+</html>
